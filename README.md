@@ -1,97 +1,79 @@
 # DiviMenus5
 
-A powerful circular/horizontal/vertical menu builder for Divi 5 with flyouts, popups, and Visual Builder support. No license required.
-
-## Features
-
-- **Circular Menu** — Place items around a central point in a circular arrangement
-- **Horizontal Menu** — Linear left-to-right (or right-to-left) menu layout
-- **Vertical Menu** — Top-to-bottom menu layout
-- **Flyout Menus** — Sub-menus that appear on hover/click
-- **Popup Menus** — Items that open content in a popup overlay
-- **Flex Menu** — Flexible box-based menu layout with logo and item alignment
-- **Full Visual Builder Support** — Configure everything in Divi's builder
-- **WooCommerce Cart Support** — Display cart count in menus
-
-## Installation
-
-1. Download `DiviMenus5-V4.zip`
-2. Go to **WordPress Admin → Plugins → Add New → Upload Plugin**
-3. Upload the zip and click **Activate**
-
-## Usage
-
-### DiviMenu Module
-
-Add a **DiviMenu** module to your page, then click **Add Menu Item** to create items. Configure:
-
-- **Menu Shape** — Circular / Horizontal / Vertical
-- **Menu Button** — The trigger button that opens/closes the menu
-- **Menu Items** — Individual items with icon, image, text, or combination
-- **Positions & Layout** — Fine-tune item placement, spacing, and alignment
-
-### DiviMenu Flex Module
-
-A flexible menu layout ideal for headers and navigation bars. Supports:
-
-- Logo placement (left/center/right)
-- Flex direction (row/column)
-- Item alignment
-- Responsive behavior
+A powerful circular, horizontal, and vertical menu builder for Divi with flyouts, popups, and full Visual Builder support. No license required.
 
 ## Requirements
 
-- Divi Theme (or Divi Builder plugin) **Divi 4 or Divi 5**
+- Divi Theme (by Elegant Themes)
 - WordPress 6.0+
 - PHP 7.4+
 
-## File Structure
+## Installation
+
+1. Upload the `DiviMenus5` folder to `/wp-content/plugins/`
+2. Activate via **Plugins → Installed Plugins** in WordPress admin
+3. Open the Divi Visual Builder and find **DiviMenus5** modules in the module picker
+
+## Module Structure
 
 ```
-DiviMenus5/
-├── divimenus5.php              # Main plugin bootstrap
-├── includes/
-│   ├── core.php               # Layout category registration
-│   ├── dm5-extension.php      # DiviExtension subclass
-│   ├── dm5-helper.php         # Utility functions
-│   ├── loader.php             # Autoloader
-│   └── modules/
-│       ├── DiviMenus5/        # Circular/horiz/vertical menus
-│       │   ├── DiviMenus5.php
-│       │   ├── DiviMenus5_Module.php
-│       │   ├── DiviMenus5_Item_Module.php
-│       │   └── loader.php
-│       └── DiviMenus5Flex/    # Flex menu
-│           ├── DiviMenus5Flex.php
-│           ├── DiviMenus5Flex_Module.php
-│           ├── DiviMenus5Flex_Item_Module.php
-│           └── loader.php
-├── scripts/
-│   └── frontend.js            # Client-side menu interactions
-└── styles/
-    └── frontend.css           # Menu styling
+includes/
+├── loader.php                          ← Loads all module loaders
+├── dm5-helper.php                      ← Shared helper class (DiviMenusHelper)
+├── core.php                            ← Layout category registration
+└── dm5-extension.php                  ← Extension bootstrap
+    └── modules/
+        ├── DiviMenus5/                 ← Circular/Horizontal/Vertical menus
+        │   ├── DiviMenus5_Module.php   ← Parent module class
+        │   ├── DiviMenus5.php          ← Module definition file
+        │   ├── loader.php              ← Loads parent + child
+        │   └── DiviMenus5Item/
+        │       └── DiviMenus5_Item_Module.php  ← Child item module
+        └── DiviMenus5Flex/            ← Flex menu module
+            ├── DiviMenus5Flex_Module.php       ← Parent flex module class
+            ├── DiviMenus5Flex.php             ← Module definition file
+            ├── loader.php                      ← Loads parent + child
+            └── DiviMenus5FlexItem/
+                └── DiviMenus5Flex_Item_Module.php  ← Child flex item module
 ```
 
-## Development
+## Modules
 
-```bash
-# Install dependencies (if adding JSX/React support)
-yarn install
+### DiviMenus5 (Parent Module)
+A complete circular, horizontal, or vertical menu with:
+- 8 built-in trigger positions
+- Full flyout/popup support
+- WooCommerce + EDD cart integration
+- WordPress menu import
+- Divi Library layout embedding
+- Icon, text, and image item types
+- Full VB support via `vb_support = 'partial'`
 
-# Start build in watch mode
-yarn start
+### DiviMenus5 Item (Child Module)
+- Child module used inside DiviMenus5 parent
+- Adds individual menu items to the parent menu
+- Supports icons, text, images, and links
+- Full link/popup/show field controls
 
-# Production build
-yarn build
-```
+### DiviMenus5Flex (Parent Module)
+- Flexbox-based menu with precise alignment controls
+- 4 layout types: row, column, grid, wrap
+- 7 alignment options per axis
+- Hover effects and transitions
 
-## Notes
+### DiviMenus5Flex Item (Child Module)
+- Child module for Flex menu items
+- Per-item icon/text/image layout
 
-- This is a **standalone rebuild** of the original DiviMenus plugin, built from scratch for Divi 5 compatibility
-- No license or authentication system is included
-- All original DiviMenus features are replicated
-- JSX/React components for the Visual Builder are planned for a future release
+## Visual Builder Support
 
-## License
+All modules use `vb_support = 'partial'` for compatibility with both Divi 4 and Divi 5.
 
-GPL2
+## Changelog
+
+### 1.0.0
+- Initial release for Divi 5
+- Circular, horizontal, vertical menu (DiviMenus5)
+- Flex menu (DiviMenus5Flex)
+- WooCommerce + EDD support
+- Visual Builder partial support

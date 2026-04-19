@@ -133,7 +133,7 @@ class DiviMenus5_Module extends ET_Builder_Module {
 			'central_item_use_circle' => array(
 				'label'           => esc_html__( 'Use Circle Background', 'divimenus5' ),
 				'type'            => 'select',
-				'options'         => DM5_Helper::get_yes_no_options(),
+				'options'         => DiviMenusHelper::get_yes_no_options(),
 				'default'          => 'on',
 				'toggle_slug'      => 'button_settings',
 			),
@@ -147,7 +147,7 @@ class DiviMenus5_Module extends ET_Builder_Module {
 			'central_item_use_circle_border' => array(
 				'label'           => esc_html__( 'Use Circle Border', 'divimenus5' ),
 				'type'            => 'select',
-				'options'         => DM5_Helper::get_yes_no_options(),
+				'options'         => DiviMenusHelper::get_yes_no_options(),
 				'default'         => 'off',
 				'toggle_slug'     => 'button_settings',
 				'show_if'         => array( 'central_item_use_circle' => 'on' ),
@@ -175,7 +175,7 @@ class DiviMenus5_Module extends ET_Builder_Module {
 			'central_item_scale' => array(
 				'label'           => esc_html__( 'Scale Button on Menu Open', 'divimenus5' ),
 				'type'            => 'select',
-				'options'         => DM5_Helper::get_yes_no_options(),
+				'options'         => DiviMenusHelper::get_yes_no_options(),
 				'default'         => 'off',
 				'toggle_slug'     => 'button_settings',
 			),
@@ -194,7 +194,7 @@ class DiviMenus5_Module extends ET_Builder_Module {
 			'menu_button_show_title' => array(
 				'label'           => esc_html__( 'Show Button Title', 'divimenus5' ),
 				'type'            => 'select',
-				'options'         => DM5_Helper::get_yes_no_options(),
+				'options'         => DiviMenusHelper::get_yes_no_options(),
 				'default'         => 'off',
 				'toggle_slug'     => 'main_content',
 			),
@@ -216,7 +216,7 @@ class DiviMenus5_Module extends ET_Builder_Module {
 			'menu_item_show_title' => array(
 				'label'           => esc_html__( 'Show Item Titles', 'divimenus5' ),
 				'type'            => 'select',
-				'options'         => DM5_Helper::get_yes_no_options(),
+				'options'         => DiviMenusHelper::get_yes_no_options(),
 				'default'         => 'on',
 				'toggle_slug'     => 'main_content',
 			),
@@ -418,14 +418,14 @@ class DiviMenus5_Module extends ET_Builder_Module {
 			'show_open' => array(
 				'label'           => esc_html__( 'Show Open Button', 'divimenus5' ),
 				'type'            => 'select',
-				'options'         => DM5_Helper::get_yes_no_options(),
+				'options'         => DiviMenusHelper::get_yes_no_options(),
 				'default'         => 'on',
 				'toggle_slug'     => 'visibility',
 			),
 			'hide_button' => array(
 				'label'           => esc_html__( 'Hide Button when Menu is Open', 'divimenus5' ),
 				'type'            => 'select',
-				'options'         => DM5_Helper::get_yes_no_options(),
+				'options'         => DiviMenusHelper::get_yes_no_options(),
 				'default'         => 'off',
 				'toggle_slug'     => 'visibility',
 			),
@@ -501,7 +501,7 @@ class DiviMenus5_Module extends ET_Builder_Module {
 			'inside_container' => array(
 				'label'           => esc_html__( 'Place Inside Module Container', 'divimenus5' ),
 				'type'            => 'select',
-				'options'         => DM5_Helper::get_yes_no_options(),
+				'options'         => DiviMenusHelper::get_yes_no_options(),
 				'default'         => 'off',
 				'toggle_slug'     => 'main_content',
 			),
@@ -590,7 +590,7 @@ class DiviMenus5_Module extends ET_Builder_Module {
 		foreach ( $items as $key => $item ) {
 			$type = $item['menu_item_type'] ?? 'icon_option';
 			$text = $item['menu_item_text'] ?? ( 'Item ' . ( $key + 1 ) );
-			$icon = isset( $item['menu_item_icon'] ) ? DM5_Helper::render_icon( $item['menu_item_icon'] ) : '+';
+			$icon = isset( $item['menu_item_icon'] ) ? DiviMenusHelper::render_icon_only( $item['menu_item_icon'] ) : '+';
 			$title = $item['menu_item_title'] ?? '';
 			$num = $key + 1;
 			$type_icon = $type === 'text_option' ? '<span class="dashicons dashicons-editor-textcolor" style="font-size:14px;width:14px;height:14px;"></span>' :
@@ -621,7 +621,7 @@ class DiviMenus5_Module extends ET_Builder_Module {
 			'data-effect-in="fade" data-effect-out="fade" data-effect-ms="300"'
 		);
 		if ( $type === 'central_item_icon_option' ) {
-			$icon = DM5_Helper::render_icon( $this->props['central_item_icon'] ?: '&#x33;' );
+			$icon = DiviMenusHelper::render_icon_only( $this->props['central_item_icon'] ?: '&#x33;' );
 			$out .= sprintf( '<span class="dd-item dd-button-icon dd-icon-fontawesome">%s</span>', $icon );
 		} elseif ( $type === 'central_item_text_option' ) {
 			$text = et_core_intentionally_unescaped( $this->props['central_item_text'] ?: '+', 'html' );
@@ -629,7 +629,7 @@ class DiviMenus5_Module extends ET_Builder_Module {
 				'data-desktop="' . esc_attr( $text ) . '"', $text );
 		} elseif ( $type === 'central_item_image_option' ) {
 			$img = esc_url( $this->props['central_item_image'] ?: DM5_PLACEHOLDER_IMAGE_DATA );
-			$alt = DM5_Helper::get_image_alt( $this->props, 'central_item_image', 'central_item_image_alt' );
+			$alt = DiviMenusHelper::get_image_alt( $this->props, 'central_item_image', 'central_item_image_alt' );
 			$out .= sprintf( '<img src="%s" alt="%s" class="dd-item dd-button-image" %s>',
 				$img, esc_attr( $alt ), 'data-desktop="' . esc_attr( $img ) . '"' );
 		}
@@ -647,7 +647,7 @@ class DiviMenus5_Module extends ET_Builder_Module {
 			! empty( $item['new_window'] ) && $item['new_window'] === 'on' ? 'target="_blank" rel="noopener"' : ''
 		);
 		if ( $type === 'icon' ) {
-			$icon = DM5_Helper::render_icon( $item['icon'] ?: '&#x2b;' );
+			$icon = DiviMenusHelper::render_icon_only( $item['icon'] ?: '&#x2b;' );
 			$out .= sprintf( '<span class="dd-item dd-menu-item-icon">%s</span>', $icon );
 		} elseif ( $type === 'text' ) {
 			$text = et_core_intentionally_unescaped( $item['text'] ?: 'Item', 'html' );
@@ -723,7 +723,7 @@ class DiviMenus5_Module extends ET_Builder_Module {
 		$menu_ali = $this->props['menu_alignment'] ?: 'left';
 
 		$items = $this->_get_items_data( $this->props['menu_items'] ?? '' );
-		$itemsc = DM5_Helper::get_items_count( $items );
+		$itemsc = DiviMenusHelper::get_items_count( $items );
 
 		$module_classes = trim( implode( ' ', apply_filters( 'et_builder_module_classes', array( 'et_pb_module', 'et_pb_divimenus', 'et_pb_divimenus5', $this->module_uses_wrapper ? 'et_pb_column_wrapper' : '', $this->get_module_class( $render_slug ) ), $render_slug ) ) );
 
@@ -839,7 +839,7 @@ class DiviMenus5_Item_Module extends ET_Builder_Module {
 			'menu_item_link_new_window' => array(
 				'label'           => esc_html__( 'Open in New Window', 'divimenus5' ),
 				'type'            => 'select',
-				'options'         => DM5_Helper::get_yes_no_options(),
+				'options'         => DiviMenusHelper::get_yes_no_options(),
 				'default'         => 'off',
 				'toggle_slug'     => 'link',
 			),
@@ -851,7 +851,7 @@ class DiviMenus5_Item_Module extends ET_Builder_Module {
 			'menu_item_use_circle' => array(
 				'label'           => esc_html__( 'Use Circle Background', 'divimenus5' ),
 				'type'            => 'select',
-				'options'         => DM5_Helper::get_yes_no_options(),
+				'options'         => DiviMenusHelper::get_yes_no_options(),
 				'default'         => 'off',
 				'toggle_slug'     => 'main_content',
 			),
@@ -885,28 +885,28 @@ class DiviMenus5_Item_Module extends ET_Builder_Module {
 			'hide_desktop' => array(
 				'label'           => esc_html__( 'Hide on Desktop', 'divimenus5' ),
 				'type'            => 'select',
-				'options'         => DM5_Helper::get_yes_no_options(),
+				'options'         => DiviMenusHelper::get_yes_no_options(),
 				'default'         => 'off',
 				'toggle_slug'     => 'visibility',
 			),
 			'hide_tablet' => array(
 				'label'           => esc_html__( 'Hide on Tablet', 'divimenus5' ),
 				'type'            => 'select',
-				'options'         => DM5_Helper::get_yes_no_options(),
+				'options'         => DiviMenusHelper::get_yes_no_options(),
 				'default'         => 'off',
 				'toggle_slug'     => 'visibility',
 			),
 			'hide_phone' => array(
 				'label'           => esc_html__( 'Hide on Phone', 'divimenus5' ),
 				'type'            => 'select',
-				'options'         => DM5_Helper::get_yes_no_options(),
+				'options'         => DiviMenusHelper::get_yes_no_options(),
 				'default'         => 'off',
 				'toggle_slug'     => 'visibility',
 			),
 			'title_disable' => array(
 				'label'           => esc_html__( 'Disable Title Tooltip', 'divimenus5' ),
 				'type'            => 'select',
-				'options'         => DM5_Helper::get_yes_no_options(),
+				'options'         => DiviMenusHelper::get_yes_no_options(),
 				'default'         => 'off',
 				'toggle_slug'     => 'visibility',
 			),

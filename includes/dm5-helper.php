@@ -1505,6 +1505,13 @@ class DiviMenusHelper {
 		return wp_nav_menu( apply_filters( 'dd_sub_args', $menu_args ) );
 	}
 
+	public static function get_yes_no_options() {
+		return array(
+			'off' => esc_html__( 'No', 'et_builder' ),
+			'on'  => esc_html__( 'Yes', 'et_builder' ),
+		);
+	}
+
 	public static function get_yes_no_button_options() {
 		return array(
 			'off' => esc_html__( 'No', 'et_builder' ),
@@ -1546,6 +1553,13 @@ class DiviMenusHelper {
 		if (function_exists('et_pb_extended_process_font_icon'))
 			return et_pb_extended_process_font_icon($icon);
 		else return html_entity_decode(et_pb_process_font_icon($icon));
+	}
+
+	// Simple icon renderer for single-icon-value calls (used by parent module options preview)
+	public static function render_icon_only( $icon_value ) {
+		if ( empty( $icon_value ) ) return ' ';
+		$icon = self::process_font_icon( $icon_value );
+		return sprintf( '<span class="et-pb-icon notranslate">%s</span>', apply_filters( 'dd_icon_output', esc_html( $icon ), array() ) );
 	}
 
 	public static function render_icon( $props, $render_slug, $icon_attr, $elem_class_array, $skip_tab, $mb, $opened, $selector, $hover_selector) {

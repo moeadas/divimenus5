@@ -19,6 +19,9 @@ define( 'DM5_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
 define( 'DM5_PLUGIN_PATH', __FILE__ );
 define( 'DM5_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 define( 'DM5_PLACEHOLDER_IMAGE_DATA', 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZWRlZWRlIi8+PHJlY3QgeD0iMSUiIHk9IjElIiB3aWR0aD0iMzAlIiBoZWlnaHQ9IjQwJSIgZmlsbD0iI2RkZCIvPjxyZWN0IHg9IjQxJSIgeT0iNSUiIHdpZHRoPSIyNSUiIGhlaWdodD0iMzUlIiBmaWxsPSIjYmRiZGJkIi8+PHJlY3QgeD0iNjglIiB5PSIyNSUiIHdpZHRoPSIyNSUiIGhlaWdodD0iMjUlIiBmaWxsPSIjYmRiZGJkIi8+PC9zdmc+' );
+if ( ! defined( 'DIVIMENUS_PLACEHOLDER_IMAGE_DATA' ) ) {
+	define( 'DIVIMENUS_PLACEHOLDER_IMAGE_DATA', DM5_PLACEHOLDER_IMAGE_DATA );
+}
 
 /**
  * Load helper + core early (no Divi dependency).
@@ -35,6 +38,7 @@ add_action( 'et_builder_ready', 'dm5_initialize_extension', 8 );
 
 function dm5_initialize_extension() {
 	if ( ! class_exists( 'DiviExtension' ) ) return;
+	require_once DM5_PLUGIN_DIR_PATH . 'includes/loader.php';
 	require_once DM5_PLUGIN_DIR_PATH . 'includes/dm5-extension.php';
 }
 

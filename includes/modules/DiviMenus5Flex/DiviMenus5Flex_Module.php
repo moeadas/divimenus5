@@ -316,7 +316,7 @@ class DiviMenus5Flex_Module extends ET_Builder_Module {
 		foreach ( $items as $key => $item ) {
 			$type = $item['item_type'] ?? 'icon_option';
 			$text = $item['item_text'] ?? ( 'Item ' . ( $key + 1 ) );
-			$icon = isset( $item['item_icon'] ) ? DM5_Helper::render_icon( $item['item_icon'] ) : '+';
+			$icon = isset( $item['item_icon'] ) ? DiviMenusHelper::render_icon( $item['item_icon'] ) : '+';
 			$num = $key + 1;
 			$type_icon = $type === 'text_option' ? '<span class="dashicons dashicons-editor-textcolor" style="font-size:14px;width:14px;height:14px;"></span>' :
 				( $type === 'image_option' ? '<span class="dashicons dashicons-image" style="font-size:14px;width:14px;height:14px;"></span>' :
@@ -347,7 +347,7 @@ class DiviMenus5Flex_Module extends ET_Builder_Module {
 		$out .= sprintf( '<a class="dd-item dd-flex-item-content" href="%1$s" %2$s>', $url, $new_window );
 
 		if ( $type === 'icon' ) {
-			$icon = DM5_Helper::render_icon( $item['icon'] ?? '' );
+			$icon = DiviMenusHelper::render_icon( $item['icon'] ?? '' );
 			$out .= sprintf( '<span class="dd-item-icon">%s</span>', $icon );
 		} elseif ( $type === 'text' ) {
 			$text = et_core_intentionally_unescaped( $item['text'] ?? 'Item', 'html' );
@@ -529,14 +529,14 @@ class DiviMenus5Flex_Item_Module extends ET_Builder_Module {
 			'item_new_window' => array(
 				'label'           => esc_html__( 'Open in New Window', 'divimenus5' ),
 				'type'            => 'select',
-				'options'         => DM5_Helper::get_yes_no_options(),
+				'options'         => DiviMenusHelper::get_yes_no_options(),
 				'default'         => 'off',
 				'toggle_slug'     => 'link',
 			),
 			'item_use_circle' => array(
 				'label'           => esc_html__( 'Use Circle Background', 'divimenus5' ),
 				'type'            => 'select',
-				'options'         => DM5_Helper::get_yes_no_options(),
+				'options'         => DiviMenusHelper::get_yes_no_options(),
 				'default'         => 'off',
 				'toggle_slug'     => 'main_content',
 			),
@@ -565,7 +565,7 @@ class DiviMenus5Flex_Item_Module extends ET_Builder_Module {
 			'item_show_sub' => array(
 				'label'           => esc_html__( 'Show Sub-Menu', 'divimenus5' ),
 				'type'            => 'select',
-				'options'         => DM5_Helper::get_yes_no_options(),
+				'options'         => DiviMenusHelper::get_yes_no_options(),
 				'default'         => 'off',
 				'toggle_slug'     => 'main_content',
 			),
@@ -591,21 +591,21 @@ class DiviMenus5Flex_Item_Module extends ET_Builder_Module {
 			'hide_desktop' => array(
 				'label'           => esc_html__( 'Hide on Desktop', 'divimenus5' ),
 				'type'            => 'select',
-				'options'         => DM5_Helper::get_yes_no_options(),
+				'options'         => DiviMenusHelper::get_yes_no_options(),
 				'default'         => 'off',
 				'toggle_slug'     => 'visibility',
 			),
 			'hide_tablet' => array(
 				'label'           => esc_html__( 'Hide on Tablet', 'divimenus5' ),
 				'type'            => 'select',
-				'options'         => DM5_Helper::get_yes_no_options(),
+				'options'         => DiviMenusHelper::get_yes_no_options(),
 				'default'         => 'off',
 				'toggle_slug'     => 'visibility',
 			),
 			'hide_phone' => array(
 				'label'           => esc_html__( 'Hide on Phone', 'divimenus5' ),
 				'type'            => 'select',
-				'options'         => DM5_Helper::get_yes_no_options(),
+				'options'         => DiviMenusHelper::get_yes_no_options(),
 				'default'         => 'off',
 				'toggle_slug'     => 'visibility',
 			),

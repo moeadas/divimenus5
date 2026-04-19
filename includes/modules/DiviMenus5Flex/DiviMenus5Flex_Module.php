@@ -438,6 +438,7 @@ class DiviMenus5Flex_Module extends ET_Builder_Module {
 	}
 }
 
+if ( ! class_exists( "DiviMenus5Flex_Item_Module", false ) ) {
 class DiviMenus5Flex_Item_Module extends ET_Builder_Module {
 
 	public $slug          = 'et_pb_divimenus5_flex_item';
@@ -626,4 +627,5 @@ class DiviMenus5Flex_Item_Module extends ET_Builder_Module {
 	public function render( $attrs, $content, $render_slug ) {
 		return '';
 	}
+}
 }

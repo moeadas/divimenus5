@@ -749,6 +749,7 @@ class DiviMenus5_Module extends ET_Builder_Module {
 	}
 }
 
+if ( ! class_exists( 'DiviMenus5_Item_Module', false ) ) {
 class DiviMenus5_Item_Module extends ET_Builder_Module {
 	public $slug            = 'et_pb_divimenus5_item';
 	public $vb_support      = 'partial';
@@ -927,4 +928,6 @@ class DiviMenus5_Item_Module extends ET_Builder_Module {
 	public function render( $attrs, $content, $render_slug ) {
 		return '';
 	}
+}
+}
 }

@@ -20,7 +20,7 @@ class DM5_Extension extends DiviExtension {
 					'title_d' => esc_html__( 'Define the Text for your Menu Item.', 'divimenus5' ),
 				),
 			),
-			'image_data' => ET_BUILDER_PLACEHOLDER_LANDSCAPE_IMAGE_DATA,
+			'image_data' => DM5_PLACEHOLDER_IMAGE_DATA,
 		);
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );

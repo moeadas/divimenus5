@@ -436,7 +436,7 @@ class DiviMenus5Flex_Item_Module extends ET_Builder_Module {
 			);
 		} else if ($this->props['menu_item_content'] === 'image' ) {	
 			$image_alt = DiviMenusHelper::get_image_alt($this->props, 'item_image', 'alt');		
-			$image = DiviMenusHelper::render_image ($this->props, 'item_image', '', $image_alt, ET_BUILDER_PLACEHOLDER_LANDSCAPE_IMAGE_DATA);
+			$image = DiviMenusHelper::render_image ($this->props, 'item_image', '', $image_alt, DM5_PLACEHOLDER_IMAGE_DATA);
 			$menu_item_content = sprintf('<div class="%3$s" tabindex="0"><div class="dd-item-inner">%1$s%2$s</div></div>', $image, apply_filters('dd_cart_output', DiviMenusHelper::show_cart_info($this), $this->props), implode( ' ', $menu_item_classes ) );	
 		} else {
 			$menu_item_classes[] = 'dd-text';

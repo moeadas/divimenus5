@@ -38,7 +38,9 @@ class DM5_Extension extends DiviExtension {
 	}
 
 	public function enqueue_scripts() {
-		wp_register_script( 'divimenus5', $this->plugin_dir_url . 'scripts/frontend.js', array( 'jquery' ), false, true );
+		wp_register_style( 'divimenus5', $this->plugin_dir_url . 'styles/frontend.css', array(), DM5_VERSION );
+		wp_enqueue_style( 'divimenus5' );
+		wp_register_script( 'divimenus5', $this->plugin_dir_url . 'scripts/frontend.js', array( 'jquery' ), DM5_VERSION, true );
 		if ( function_exists( 'et_core_is_fb_enabled' ) && et_core_is_fb_enabled() ) {
 			wp_enqueue_script( 'divimenus5' );
 		}

@@ -2,8 +2,8 @@
 
 class DiviMenus5Flex_Item_Module extends ET_Builder_Module {
 
-	public $slug       = 'et_pb_divimenus_flex_item';
-	public $vb_support = 'on';
+	public $slug       = 'et_pb_divimenus5_flex_item';
+	public $vb_support = 'partial';
 
 	public function init() {
 		$this->name = esc_html__( 'Menu Item', 'divimenus' );

@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class DiviMenus5_Module extends ET_Builder_Module {
 
 	public $slug                     = 'et_pb_divimenus5';
-	public $vb_support              = 'on';
+	public $vb_support              = 'partial';
 	public $child_slug             = 'et_pb_divimenus5_item';
 	public $child_item_text       = esc_html__( 'Menu Item', 'divimenus5' );
 	protected $module_uses_wrapper = false;
@@ -751,7 +751,7 @@ class DiviMenus5_Module extends ET_Builder_Module {
 
 class DiviMenus5_Item_Module extends ET_Builder_Module {
 	public $slug            = 'et_pb_divimenus5_item';
-	public $vb_support      = 'on';
+	public $vb_support      = 'partial';
 	public $uses_children   = false;
 	public $type            = 'child';
 

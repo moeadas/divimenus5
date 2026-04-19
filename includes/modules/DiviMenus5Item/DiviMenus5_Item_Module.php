@@ -2,8 +2,8 @@
 
 class DiviMenus5_Item_Module extends ET_Builder_Module {
 
-	public $slug       = 'et_pb_divimenus_item';
-	public $vb_support = 'on';
+	public $slug       = 'et_pb_divimenus5_item';
+	public $vb_support = 'partial';
 
 	public function init() {
 		$this->name = esc_html__( 'Menu Item', 'divimenus' );
@@ -397,9 +397,9 @@ class DiviMenus5_Item_Module extends ET_Builder_Module {
 
 		$url = apply_filters('dd_menu_item_url', DiviMenusHelper::get_url($this->props), $this->props);
 
-		global $et_pb_divimenus_items, $et_pb_divimenus_item_num;
+		global $et_pb_divimenus5_items, $et_pb_divimenus5_item_num;
 
-		$et_pb_divimenus_item_num++;
+		$et_pb_divimenus5_item_num++;
 
 		DiviMenusHelper::set_item_values($this->props, $et_pb_divimenus);
 
@@ -495,7 +495,7 @@ class DiviMenus5_Item_Module extends ET_Builder_Module {
 		$hide_tablet = !$item_hide_responsive ? $hide_desktop : $this->props['item_hide_tablet'] === 'on' && $this->props['item_preserve'] !== 'on';
 		$hide_phone = !$item_hide_responsive ? $hide_desktop : $this->props['item_hide_phone'] === 'on' && $this->props['item_preserve'] !== 'on';
 
-		$et_pb_divimenus_items[]  = ['title' => $title, 'content_size' => $content_size, 'content_size_t' => $content_size_t, 'content_size_p' => $content_size_p, 
+		$et_pb_divimenus5_items[]  = ['title' => $title, 'content_size' => $content_size, 'content_size_t' => $content_size_t, 'content_size_p' => $content_size_p, 
 			'use_custom' => $custom, 'use_border' => $use_border, 'border_size' => $this->props['item_circle_border_size'], 'title_disable' => $this->props['title_disable'],
 			'title_position' => $this->props['title_position'], 'title_t' => $this->props['title_position_tablet'], 'title_p' => $this->props['title_position_phone'], 
 			'padding' => $item_padding, 'padding_t' => $item_padding_t, 'padding_p' => $item_padding_p, 'size' => $item_size, 'size_t' => $item_size_t, 'size_p' => $item_size_p,

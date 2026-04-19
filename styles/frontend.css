@@ -1,0 +1,282 @@
+/* DiviMenus5 Frontend Styles v1.0.0 */
+.dd-divimenu {
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	text-align: left;
+	min-height: 60px;
+	width: 100%;
+}
+.dd-divimenu * {
+	box-sizing: border-box;
+}
+.dd-menu-bg {
+	display: none;
+	background: #ffffff;
+	z-index: 15;
+}
+.dd-divimenu-open .dd-menu-bg {
+	display: block;
+}
+.dd-menu-button {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 20;
+}
+.dd-menu-button-content {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	background: #2ea3f7;
+	color: #ffffff;
+	font-size: 24px;
+	cursor: pointer;
+	transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	overflow: visible;
+}
+.dd-menu-button-content .dd-item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+.dd-menu-button-content .dd-button-icon {
+	font-size: 24px;
+}
+.dd-menu-button-content .dd-button-text {
+	font-size: 14px;
+	font-weight: 600;
+	letter-spacing: 0;
+	white-space: nowrap;
+}
+.dd-menu-button-content .dd-button-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: inherit;
+}
+.dd-menu-items {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
+.dd-menu-item-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: all;
+	z-index: 10;
+}
+.dd-menu-item-content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background: #2ea3f7;
+	color: #ffffff;
+	font-size: 18px;
+	cursor: pointer;
+	text-decoration: none;
+	transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.dd-menu-item-content.dd-circular {
+	border-radius: 50%;
+}
+.dd-menu-item-content:not(.dd-circular) {
+	border-radius: 4px;
+}
+.dd-menu-item-content .dd-item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+.dd-menu-item-content .dd-menu-item-icon {
+	font-size: 18px;
+}
+.dd-menu-item-content .dd-menu-item-text {
+	font-size: 12px;
+	font-weight: 600;
+	text-align: center;
+	word-break: break-word;
+}
+.dd-menu-item-content .dd-menu-item-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: inherit;
+}
+.dd-tooltip {
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 6px 12px;
+	background: rgba(0,0,0,0.8);
+	color: #ffffff;
+	font-size: 12px;
+	white-space: nowrap;
+	border-radius: 4px;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s ease;
+	z-index: 30;
+	margin-bottom: 8px;
+}
+.dd-tooltip.dd-hover {
+	opacity: 1;
+}
+.dd-tooltip .dd-title {
+	display: block;
+}
+.dd-tooltip.dd-hover-enabled {
+	cursor: pointer;
+}
+.dd-title-bg {
+	background: rgba(0,0,0,0.8);
+	padding: 4px 8px;
+	border-radius: 4px;
+}
+.dd-divimenu-open .dd-menu-button-content {
+	transform: translateX(-50%) scale(0.8);
+}
+/* Horizontal & Vertical layouts */
+.dd-divimenu[data-menu-type="horizontal"] .dd-menu-items,
+.dd-divimenu[data-menu-type="vertical"] .dd-menu-items {
+	display: flex;
+	align-items: center;
+}
+.dd-divimenu[data-menu-type="horizontal"] .dd-menu-item-content,
+.dd-divimenu[data-menu-type="vertical"] .dd-menu-item-content {
+	position: relative;
+	transform: none !important;
+}
+/* Flex Menu Styles */
+.dd-flex {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	padding: 10px 20px;
+	background: #ffffff;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.dd-flex .dd-logo img {
+	max-height: 40px;
+	width: auto;
+}
+.dd-menu-flex-sub {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	min-width: 200px;
+	background: #ffffff;
+	box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+	border-radius: 4px;
+	z-index: 100;
+	display: none;
+}
+.dd-menu-flex-sub.dd-open {
+	display: block;
+}
+.dd-sub-fw {
+	position: relative;
+}
+/* Popup Styles */
+.dd-popup-c {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 99999;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0,0,0,0.6);
+}
+.dd-popup-c.open {
+	display: flex;
+}
+.dd-menu-item-modal {
+	position: relative;
+	max-width: 90vw;
+	max-height: 90vh;
+	overflow: auto;
+	background: #ffffff;
+	border-radius: 8px;
+	padding: 30px;
+}
+.dd-close-icon {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	font-size: 20px;
+	color: #333;
+	z-index: 10;
+	background: rgba(255,255,255,0.9);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.dd-modal-width {
+	max-width: 1080px;
+}
+/* Utility classes */
+.dd-h { display: none !important; }
+.dd-divimenu-open .dd-menu-item-wrapper {
+	pointer-events: all;
+}
+.dd-divimenu:not(.dd-divimenu-open) .dd-menu-item-wrapper {
+	pointer-events: none !important;
+}
+.dd-show { cursor: pointer; }
+.dd-show-hover:hover .dd-tooltip { opacity: 1; }
+.dd-mi-w { display: inline-block; }
+.dd-menu-button-content.hover {
+	box-shadow: 0 0 0 8px rgba(46,162,247,0.3);
+}
+.dd-menu-item-content.hover {
+	box-shadow: 0 0 0 6px rgba(46,162,247,0.3);
+}
+/* Responsive helpers */
+@media (max-width: 767px) {
+	.dd-h-p { display: none !important; }
+}
+@media (min-width: 768px) and (max-width: 980px) {
+	.dd-h-t { display: none !important; }
+}
+@media (min-width: 981px) {
+	.dd-h-d { display: none !important; }
+}
+/* WooCommerce cart fragment support */
+.dm5-cart-count {
+	font-weight: bold;
+}
+.et-l--body .dd-divimenu,
+.et-l--post .dd-divimenu {
+	z-index: 100;
+}
+.et-l--header .dd-divimenu {
+	z-index: 200;
+}
